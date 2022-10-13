@@ -1,6 +1,12 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router'
 import { RouteRecordRaw } from 'vue-router'
-import TabsPage from './modules/tab/container.vue'
+import HomeScreen from './screens/HomeScreen.vue'
+import LoginScreen from './screens/LoginScreen.vue'
+import MarketScreen from './screens/MarketScreen.vue'
+import HomePage from './pages/HomePage.vue'
+import MarketsPage from './pages/MarketsPage.vue'
+import TradePage from './pages/TradePage.vue'
+import WalletPage from './pages/WalletPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
 	{
@@ -9,28 +15,37 @@ const routes: Array<RouteRecordRaw> = [
 	},
 	{
 		path: '/t/',
-		component: TabsPage,
+		component: HomeScreen,
 		children: [
 			{
 				path: '',
 				redirect: '/t/home',
 			},
 			{
-				path: 'home',
-				name: 'Home',
-				component: () => import('@/modules/playlist/index.vue'),
-			},
+        path: 'home',
+        component: HomePage,
+      },
 			{
-				path: 'search',
-				name: 'Search',
-				component: () => import('@/modules/search/index.vue'),
-			},
-		],
+        path: 'markets',
+        component: MarketsPage,
+      },
+      {
+        path: 'trade',
+        component: TradePage,
+      },
+      {
+        path: 'wallet',
+        component: WalletPage,
+      },
+		]
 	},
 	{
-		path: '/player',
-		name: 'Player',
-		component: () => import('@/modules/player/index.vue'),
+		path: '/login',
+		component: LoginScreen
+	},
+	{
+		path: '/market',
+		component: MarketScreen
 	},
 ]
 

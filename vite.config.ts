@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
 import { VitePWA } from 'vite-plugin-pwa'
 import { resolve } from 'node:path'
+import colors from './src/colors'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -43,6 +44,24 @@ export default defineConfig({
 			},
 		}),
 	],
+	css: {
+    preprocessorOptions: {
+      less: {
+        additionalData: (function () {
+          let variables = ''
+
+          for (const key in colors) {
+            const variable = `@${key}`
+            const color = (colors as unknown as { [key: string]: string })[key]
+
+            variables += `${variable}: ${color};\n`
+          }
+
+          return variables
+        }()),
+      },
+    },
+  },
 	// Dev server setting
 	server: {
 		proxy: {

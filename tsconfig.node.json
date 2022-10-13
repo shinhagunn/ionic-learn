@@ -5,5 +5,5 @@
 		"moduleResolution": "Node",
 		"types": ["vitest/globals"]
 	},
-	"include": ["vite.config.ts", "vitest.config.ts", "windi.config.ts", "capacitor.config.ts"]
+	"include": ["vite.config.ts", "vitest.config.ts", "windi.config.ts", "capacitor.config.ts", "src/colors.ts"]
 }
