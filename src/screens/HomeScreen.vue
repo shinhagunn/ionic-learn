@@ -9,7 +9,7 @@
         </IonTabButton>
 
         <IonTabButton tab="tab2" class="tabbar-item" href="/t/markets">
-          <ChartBarDuotone />
+          <IconChartBarDuotone />
           <IonLabel>Markets</IonLabel>
         </IonTabButton>
 
