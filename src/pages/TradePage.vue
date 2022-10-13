@@ -1,18 +1,10 @@
-<script setup lang="ts">
-import {
-	IonContent,
-	IonHeader,
-	IonPage,
-} from '@ionic/vue'
-</script>
-
 <template>
-  <ion-page>
-    <ion-header class="text-center">
+  <IonPage>
+    <IonHeader class="text-center">
       Trade Page
-    </ion-header>
-    <ion-content :scroll-y="false">
+    </IonHeader>
+    <IonContent :scroll-y="false">
       Đây là Trade Page
-    </ion-content>
-  </ion-page>
+    </IonContent>
+  </IonPage>
 </template>

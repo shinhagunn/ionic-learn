@@ -1,0 +1,21 @@
+{
+  "extends": "@antfu",
+	"rules": {
+    "no-restricted-syntax": "off",
+    "curly": "off",
+    "brace-style": "off",
+    "no-cond-assign": "off",
+    "react/display-name": "off",
+    "react/no-unknown-property": "off",
+    "vue/require-slots-as-functions": "off",
+    "vue/return-in-computed-property": "off",
+    "no-case-declarations": "off",
+    "new-cap": "off",
+    "@typescript-eslint/brace-style": "off",
+    "eslint-comments/no-unlimited-disable": "off",
+    "antfu/if-newline": "off",
+    "vue/valid-v-model": "off",
+    "camelcase": "error",
+		"vue/no-deprecated-slot-attribute": "off"
+  }
+}

@@ -1,26 +1,22 @@
 <script setup lang="ts">
-import {
-	IonContent,
-	IonHeader,
-	IonPage,
-  IonButton,
-} from '@ionic/vue'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
 const navLink = () => {
-	router.push('/market')
+  router.push('/market')
 }
 </script>
 
 <template>
-  <ion-page>
-    <ion-header class="text-center">
+  <IonPage>
+    <IonHeader class="text-center">
       Home Page
-    </ion-header>
-    <ion-content :scroll-y="false">
-      <ion-button @click="navLink">Go to detail</ion-button>
-    </ion-content>
-  </ion-page>
+    </IonHeader>
+    <IonContent :scroll-y="false">
+      <IonButton @click="navLink">
+        Go to detail
+      </IonButton>
+    </IonContent>
+  </IonPage>
 </template>

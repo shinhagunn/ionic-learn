@@ -1,4 +1,3 @@
-const grayColor = '#a9aebb'
 const actionColor = '#a2b8da'
 const headerBackground = '#1c2330'
 

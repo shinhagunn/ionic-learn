@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
-	appId: 'dev.darekaze.campion',
-	appName: 'campion',
+	appId: 'com.zsmartex.huuhait',
+	appName: 'ZSmartex',
 	webDir: 'dist',
 	bundledWebRuntime: false,
 }
