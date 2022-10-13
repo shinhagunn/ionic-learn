@@ -28,6 +28,7 @@
 		"pinia": "^2.0.14",
 		"unplugin-auto-import": "^0.11.2",
 		"unplugin-vue-components": "^0.22.8",
+		"vant": "^3.6.4",
 		"vue": "^3.2.21",
 		"vue-query": "^1.25.1",
 		"vue-router": "^4.0.12"

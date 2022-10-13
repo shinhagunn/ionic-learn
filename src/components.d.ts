@@ -26,6 +26,8 @@ declare module '@vue/runtime-core' {
     IonTabs: typeof import('@ionic/vue')['IonTabs']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    VanSwipe: typeof import('vant/es')['Swipe']
+    VanSwipeItem: typeof import('vant/es')['SwipeItem']
     WalletDuotone: typeof import('./components/icon/WalletDuotone.vue')['default']
   }
 }

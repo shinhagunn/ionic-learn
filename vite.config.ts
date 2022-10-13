@@ -2,7 +2,7 @@ import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
-import { IonicResolver, VueUseComponentsResolver, VueUseDirectiveResolver } from 'unplugin-vue-components/resolvers'
+import { IonicResolver, VantResolver, VueUseComponentsResolver, VueUseDirectiveResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import Unocss from 'unocss/vite'
@@ -68,9 +68,12 @@ export default defineConfig({
     Components({
       directoryAsNamespace: true,
       resolvers: [
-        IonicResolver(),
         VueUseComponentsResolver(),
         VueUseDirectiveResolver(),
+        IonicResolver(),
+        VantResolver({
+          importStyle: 'less',
+        }),
       ],
       extensions: ['vue', 'md'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
