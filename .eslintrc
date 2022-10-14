@@ -1,5 +1,5 @@
 {
-  "extends": "@antfu",
+  "extends": ["@antfu", "./.eslintrc-auto-import.json"],
 	"rules": {
     "no-restricted-syntax": "off",
     "curly": "off",
