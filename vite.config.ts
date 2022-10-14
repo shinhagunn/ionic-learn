@@ -50,6 +50,9 @@ export default defineConfig({
       },
     }),
     AutoImport({
+      eslintrc: {
+        enabled: true,
+      },
       imports: [
         'vue',
         'vue-router',
@@ -62,8 +65,10 @@ export default defineConfig({
       dirs: [
         'src/composables',
         'src/store',
+        'src/types',
       ],
       vueTemplate: true,
+
     }),
     Components({
       directoryAsNamespace: true,
@@ -102,7 +107,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'https://demo.zsmartex.com',
         changeOrigin: true,
         secure: false,
       },

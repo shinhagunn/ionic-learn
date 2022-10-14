@@ -5,7 +5,6 @@ export const usePublicStore = defineStore({
   id: 'public',
   state() {
     return {
-      first_route: ref<boolean>(true),
       markets: ref<Market[]>([]),
       currencies: ref<Currency[]>([]),
       withdraw_limits: ref<WithdrawLimit[]>([]),
@@ -51,17 +50,6 @@ export const usePublicStore = defineStore({
       }
       catch (error) {
         return error
-      }
-    },
-    async FetchSparklines() {
-      for (const marketID of [...new Set(config.home_page_feature_markets), ...new Set(config.markets_page_feature_markets)]) {
-        try {
-          const { data } = await useBetterFetch<number[][]>(`trade/public/markets/${marketID}/k-line?period=60&time_to=${Math.round(+new Date() / 1000)}&limit=72`)
-          this.sparklines[marketID] = data.map((r: number[]) => r[4]) || []
-        } catch (error) {
-          this.sparklines[marketID] = []
-          return error
-        }
       }
     },
     async FetchBanners() {

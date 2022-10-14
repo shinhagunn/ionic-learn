@@ -1,3 +1,5 @@
+import type { RouteLocationNormalized } from 'vue-router'
+
 declare global {
   interface Activity {
     id: number
@@ -293,6 +295,8 @@ declare global {
     created_at: string
     updated_at: string
   }
+
+	export type Middleware = (to?: RouteLocationNormalized, from?: RouteLocationNormalized) => unknown
 }
 
 export {}
