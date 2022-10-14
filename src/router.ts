@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router'
 import type { RouteRecordRaw } from 'vue-router'
-import HomeScreen from './screens/HomeScreen.vue'
 import LoginScreen from './screens/LoginScreen.vue'
 import MarketScreen from './screens/MarketScreen.vue'
 import HomePage from './pages/HomePage.vue'
 import MarketsPage from './pages/MarketsPage.vue'
 import TradePage from './pages/TradePage.vue'
 import WalletPage from './pages/WalletPage.vue'
+import TabsPage from './pages/TabsPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/t/',
-    component: HomeScreen,
+    component: TabsPage,
     children: [
       {
         path: '',

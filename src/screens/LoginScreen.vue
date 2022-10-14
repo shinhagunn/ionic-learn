@@ -1,31 +1,20 @@
 <script setup lang="ts">
-import {
-	IonHeader,
-  IonToolbar,
-  IonButtons,
-  IonModal,
-  IonTitle,
-  IonButton,
-} from '@ionic/vue'
-import { templateRef } from '@vueuse/core';
-
-const target = templateRef('modal')
-
-const cancel = () => {
-  target.value.$el.dismiss(null, 'cancel')
-}
-
 </script>
 
 <template>
-  <ion-modal ref="modal" trigger="modal-login">
-    <ion-header>
+  <ion-page>
+    <ion-header :translucent="true">
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-button @click="cancel()">Cancel</ion-button>
+          <ion-back-button text="Home" default-href="/t/home" />
         </ion-buttons>
-        <ion-title>Login</ion-title>
+        <ion-title class="text-sm">
+          LOGIN
+        </ion-title>
       </ion-toolbar>
     </ion-header>
-  </ion-modal>
+    <ion-content>
+      Đây là login screen
+    </ion-content>
+  </ion-page>
 </template>

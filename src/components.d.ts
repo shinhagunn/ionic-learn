@@ -7,15 +7,14 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ChartBarDuotone: typeof import('./components/icon/ChartBarDuotone.vue')['default']
-    ExchangeDuotone: typeof import('./components/icon/ExchangeDuotone.vue')['default']
-    HomeDashDuotone: typeof import('./components/icon/HomeDashDuotone.vue')['default']
     IconChartBarDuotone: typeof import('./components/icon/ChartBarDuotone.vue')['default']
     IconExchangeDuotone: typeof import('./components/icon/ExchangeDuotone.vue')['default']
     IconHomeDashDuotone: typeof import('./components/icon/HomeDashDuotone.vue')['default']
     IconWalletDuotone: typeof import('./components/icon/WalletDuotone.vue')['default']
     IonApp: typeof import('@ionic/vue')['IonApp']
+    IonBackButton: typeof import('@ionic/vue')['IonBackButton']
     IonButton: typeof import('@ionic/vue')['IonButton']
+    IonButtons: typeof import('@ionic/vue')['IonButtons']
     IonContent: typeof import('@ionic/vue')['IonContent']
     IonHeader: typeof import('@ionic/vue')['IonHeader']
     IonLabel: typeof import('@ionic/vue')['IonLabel']
@@ -24,10 +23,11 @@ declare module '@vue/runtime-core' {
     IonTabBar: typeof import('@ionic/vue')['IonTabBar']
     IonTabButton: typeof import('@ionic/vue')['IonTabButton']
     IonTabs: typeof import('@ionic/vue')['IonTabs']
+    IonTitle: typeof import('@ionic/vue')['IonTitle']
+    IonToolbar: typeof import('@ionic/vue')['IonToolbar']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VanSwipe: typeof import('vant/es')['Swipe']
     VanSwipeItem: typeof import('vant/es')['SwipeItem']
-    WalletDuotone: typeof import('./components/icon/WalletDuotone.vue')['default']
   }
 }

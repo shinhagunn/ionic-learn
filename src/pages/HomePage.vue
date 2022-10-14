@@ -1,10 +1,18 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { Swiper, SwiperSlide } from 'swiper/vue'
 
 const router = useRouter()
 
 const navLink = () => {
   router.push('/market')
+}
+
+const onSwiper = (swiper) => {
+  console.log(swiper)
+}
+const onSlideChange = () => {
+  console.log('slide change')
 }
 </script>
 
@@ -14,12 +22,16 @@ const navLink = () => {
       Home Page
     </IonHeader>
     <IonContent :scroll-y="false">
-      <VanSwipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <VanSwipeItem>1</VanSwipeItem>
-        <VanSwipeItem>2</VanSwipeItem>
-        <VanSwipeItem>3</VanSwipeItem>
-        <VanSwipeItem>4</VanSwipeItem>
-      </VanSwipe>
+      <swiper
+        :slides-per-view="3"
+        :space-between="50"
+        @swiper="onSwiper"
+        @slide-change="onSlideChange"
+      >
+        <swiper-slide>Slide 1</swiper-slide>
+        <swiper-slide>Slide 2</swiper-slide>
+        <swiper-slide>Slide 3</swiper-slide>
+      </swiper>
       <IonButton @click="navLink">
         Go to detail
       </IonButton>
