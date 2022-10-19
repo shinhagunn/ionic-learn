@@ -9,7 +9,7 @@
         </IonTabButton>
 
         <IonTabButton tab="tab2" class="tabbar-item" href="/t/markets">
-          <IconChartBarDuotone />
+          <IconCoinConvertDuotone />
           <IonLabel>Markets</IonLabel>
         </IonTabButton>
 
@@ -30,6 +30,11 @@
 <style lang="less">
 .tabbar {
   background-color: #20283c !important;
+  border-top: none;
+
+  &-item {
+    color: @gray-color;
+  }
 
   &::before, &::after {
     content: none;
@@ -57,12 +62,12 @@
   }
 
   .cls-1 {
-    fill: rgba(#9eaed6, 0.75);
+    fill: @gray-color;
     transition: all 0.3s;
   }
 
   .cls-2 {
-    fill: #515c7a;
+    fill: @placeholder-color;
     transition: all 0.3s;
   }
 }

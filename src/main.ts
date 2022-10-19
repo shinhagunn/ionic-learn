@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { IonicVue } from '@ionic/vue'
 import { VueQueryPlugin } from 'vue-query'
+import vant from 'vant'
 import App from './App.vue'
 import router from './router'
 
@@ -21,7 +22,8 @@ const app = createApp(App)
     swipeBackEnabled: false,
     mode: 'ios',
   })
-  .use(VueQueryPlugin)
+  .use(vant)
+  // .use(VueQueryPlugin)
   .use(pinia)
   .use(router)
 

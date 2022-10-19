@@ -19,7 +19,7 @@
       "."
     ],
     "types": [
-			"types",
+			"src/types",
       "vitest",
       "vite/client",
       // "vue/ref-macros",

@@ -13,6 +13,8 @@ export const usePublicStore = defineStore({
       banners: ref<Banner[]>([]),
       headers: ref<Record<string, any>>(),
       currency_quote_price: ref(''),
+      bannerLoading: ref(false),
+      loading: ref(false),
     }
   },
   actions: {
@@ -23,6 +25,7 @@ export const usePublicStore = defineStore({
           markets: Market[]
           currencies: Currency[]
         }>('trade/public/config')
+
         this.currencies = data.currencies
         this.markets = data.markets.map((m) => {
           m.base_currency = data.currencies.find(c => c.id === m.base_unit) as Currency
@@ -53,12 +56,15 @@ export const usePublicStore = defineStore({
       }
     },
     async FetchBanners() {
+      this.bannerLoading = true
       try {
         const { data } = await useBetterFetch<Banner[]>('kouda/public/banners')
 
         this.banners = data
       } catch (error) {
         return error
+      } finally {
+        this.bannerLoading = false
       }
     },
   },

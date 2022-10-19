@@ -4,7 +4,7 @@ export function getUrl(ws: boolean) {
   if (ws) {
     return globalThis.location.protocol === 'https:' ? `wss://${globalThis.location.host}/api/v2/websocket/` : `ws://${globalThis.location.host}/api/v2/websocket/`
   } else if (process.env.NODE_ENV === 'development') {
-    return 'http://localhost:3000/api/v2/'
+    return `http://${globalThis.location.host}/api/v2/`
   } else {
     return `${apiUrl}/api/v2/`
   }
@@ -22,43 +22,6 @@ export default {
     url: getUrl(false),
     ws: getUrl(true),
   },
-  page_rules: [
-    {
-      header: true,
-      name: '*',
-      footer: true,
-    },
-    {
-      header: true,
-      name: 'exchange',
-      footer: true,
-    },
-    {
-      header: true,
-      name: 'login',
-      footer: false,
-    },
-    {
-      header: true,
-      name: 'register',
-      footer: false,
-    },
-    {
-      header: true,
-      name: 'confirm-email',
-      footer: false,
-    },
-    {
-      header: true,
-      name: 'forgot-password',
-      footer: false,
-    },
-    {
-      header: true,
-      name: 'reset-password',
-      footer: false,
-    },
-  ],
 }
 
 export {

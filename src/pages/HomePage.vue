@@ -1,50 +1,76 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-
-const router = useRouter()
-
-const navLink = () => {
-  router.push('/market')
-}
-
-const onSwiper = (swiper) => {
-  console.log(swiper)
-}
-const onSlideChange = () => {
-  console.log('slide change')
-}
+import { useIonRouter } from '@ionic/vue'
+import SearchLight from '~/components/icon/SearchLight.vue'
+import Banner from '~/layouts/home/Banner.vue'
+import FeatureMarkets from '~/layouts/home/FeatureMarkets.vue'
+import TrendMarkets from '~/layouts/home/TrendMarkets.vue'
+import UserDuotone from '~/components/icon/UserDuotone.vue'
+const ionRouter = useIonRouter()
 </script>
 
 <template>
-  <IonPage>
-    <IonHeader class="text-center">
-      Home Page
-    </IonHeader>
-    <IonContent :scroll-y="false">
-      <swiper
-        :slides-per-view="3"
-        :space-between="50"
-        @swiper="onSwiper"
-        @slide-change="onSlideChange"
-      >
-        <swiper-slide>Slide 1</swiper-slide>
-        <swiper-slide>Slide 2</swiper-slide>
-        <swiper-slide>Slide 3</swiper-slide>
-      </swiper>
-      <IonButton @click="navLink">
-        Go to detail
-      </IonButton>
+  <IonPage class="pages-home">
+    <IonContent>
+      <div class="pages-home-head">
+        <div class="pages-home-head-user">
+          <UserDuotone />
+        </div>
+        <div class="pages-home-head-search" @click="ionRouter.push('/search')">
+          <SearchLight />
+          <span class="ml-2">Search</span>
+        </div>
+      </div>
+      <Banner />
+      <FeatureMarkets />
+      <TrendMarkets />
     </IonContent>
   </IonPage>
 </template>
 
 <style lang="less">
-.my-swipe .van-swipe-item {
-    color: #fff;
-    font-size: 20px;
-    line-height: 150px;
-    text-align: center;
-    background-color: #39a9ed;
+.pages-home {
+  &-head {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+
+    &-user {
+      height: 28px;
+      svg {
+        margin-right: 16px;
+        width: 28px;
+        height: 28px;
+      }
+
+      .cls-1 {
+        fill: @gray-color;
+      }
+
+      .cls-2 {
+        fill: @placeholder-color;
+      }
+    }
+
+    &-search {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      background-color: rgba(@exchange-border-color, 0.5) !important;
+      height: 24px;
+      border-radius: 12px;
+      color: @gray-color;
+
+      svg {
+        margin-right: 4px;
+        width: 20px;
+        height: 20px;
+      }
+
+      .cls-1 {
+        fill: @gray-color;
+      }
+    }
   }
+}
 </style>

@@ -8,7 +8,33 @@ declare global {
   const $ref: typeof import('vue/macros')['$ref']
   const $shallowRef: typeof import('vue/macros')['$shallowRef']
   const $toRef: typeof import('vue/macros')['$toRef']
+  const APIKeyState: typeof import('./types/index')['APIKeyState']
+  const ActivityResult: typeof import('./types/index')['ActivityResult']
+  const ActivityTopic: typeof import('./types/index')['ActivityTopic']
+  const Align: typeof import('./types/index')['Align']
+  const AssetType: typeof import('./types/index')['AssetType']
+  const BlockchainClient: typeof import('./types/index')['BlockchainClient']
+  const BlockchainStatus: typeof import('./types/index')['BlockchainStatus']
+  const ChartType: typeof import('./types/index')['ChartType']
+  const CommissionType: typeof import('./types/index')['CommissionType']
+  const CurrencyNetworkStatus: typeof import('./types/index')['CurrencyNetworkStatus']
   const EffectScope: typeof import('vue')['EffectScope']
+  const ExchangeLayout: typeof import('./types/index')['ExchangeLayout']
+  const Format: typeof import('./types/index')['Format']
+  const InputType: typeof import('./types/index')['InputType']
+  const NoticeType: typeof import('./types/index')['NoticeType']
+  const OrderSide: typeof import('./types/index')['OrderSide']
+  const OrderState: typeof import('./types/index')['OrderState']
+  const OrderType: typeof import('./types/index')['OrderType']
+  const OrdersManagerType: typeof import('./types/index')['OrdersManagerType']
+  const ParseType: typeof import('./types/index')['ParseType']
+  const Placement: typeof import('./types/index')['Placement']
+  const SortBy: typeof import('./types/index')['SortBy']
+  const TooltipPlacement: typeof import('./types/index')['TooltipPlacement']
+  const UserLabelScope: typeof import('./types/index')['UserLabelScope']
+  const UserState: typeof import('./types/index')['UserState']
+  const WebSocketType: typeof import('./types/index')['WebSocketType']
+  const WithdrawStatus: typeof import('./types/index')['WithdrawStatus']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const computed: typeof import('vue')['computed']
@@ -269,7 +295,33 @@ declare module '@vue/runtime-core' {
     readonly $ref: UnwrapRef<typeof import('vue/macros')['$ref']>
     readonly $shallowRef: UnwrapRef<typeof import('vue/macros')['$shallowRef']>
     readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
+    readonly APIKeyState: UnwrapRef<typeof import('./types/index')['APIKeyState']>
+    readonly ActivityResult: UnwrapRef<typeof import('./types/index')['ActivityResult']>
+    readonly ActivityTopic: UnwrapRef<typeof import('./types/index')['ActivityTopic']>
+    readonly Align: UnwrapRef<typeof import('./types/index')['Align']>
+    readonly AssetType: UnwrapRef<typeof import('./types/index')['AssetType']>
+    readonly BlockchainClient: UnwrapRef<typeof import('./types/index')['BlockchainClient']>
+    readonly BlockchainStatus: UnwrapRef<typeof import('./types/index')['BlockchainStatus']>
+    readonly ChartType: UnwrapRef<typeof import('./types/index')['ChartType']>
+    readonly CommissionType: UnwrapRef<typeof import('./types/index')['CommissionType']>
+    readonly CurrencyNetworkStatus: UnwrapRef<typeof import('./types/index')['CurrencyNetworkStatus']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly ExchangeLayout: UnwrapRef<typeof import('./types/index')['ExchangeLayout']>
+    readonly Format: UnwrapRef<typeof import('./types/index')['Format']>
+    readonly InputType: UnwrapRef<typeof import('./types/index')['InputType']>
+    readonly NoticeType: UnwrapRef<typeof import('./types/index')['NoticeType']>
+    readonly OrderSide: UnwrapRef<typeof import('./types/index')['OrderSide']>
+    readonly OrderState: UnwrapRef<typeof import('./types/index')['OrderState']>
+    readonly OrderType: UnwrapRef<typeof import('./types/index')['OrderType']>
+    readonly OrdersManagerType: UnwrapRef<typeof import('./types/index')['OrdersManagerType']>
+    readonly ParseType: UnwrapRef<typeof import('./types/index')['ParseType']>
+    readonly Placement: UnwrapRef<typeof import('./types/index')['Placement']>
+    readonly SortBy: UnwrapRef<typeof import('./types/index')['SortBy']>
+    readonly TooltipPlacement: UnwrapRef<typeof import('./types/index')['TooltipPlacement']>
+    readonly UserLabelScope: UnwrapRef<typeof import('./types/index')['UserLabelScope']>
+    readonly UserState: UnwrapRef<typeof import('./types/index')['UserState']>
+    readonly WebSocketType: UnwrapRef<typeof import('./types/index')['WebSocketType']>
+    readonly WithdrawStatus: UnwrapRef<typeof import('./types/index')['WithdrawStatus']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>

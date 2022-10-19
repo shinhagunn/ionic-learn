@@ -296,7 +296,7 @@ declare global {
     updated_at: string
   }
 
-	export type Middleware = (to?: RouteLocationNormalized, from?: RouteLocationNormalized) => unknown
+	type Middleware = (to?: RouteLocationNormalized, from?: RouteLocationNormalized) => unknown
 }
 
 export {}

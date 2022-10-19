@@ -7,6 +7,7 @@ import MarketsPage from './pages/MarketsPage.vue'
 import TradePage from './pages/TradePage.vue'
 import WalletPage from './pages/WalletPage.vue'
 import TabsPage from './pages/TabsPage.vue'
+import SearchMarketScreen from './screens/SearchMarketScreen.vue'
 import { fetchDataMiddleware } from '~/middleware/fetchData.global'
 
 let firstRoute = true
@@ -50,6 +51,10 @@ const routes: Array<RouteRecordRaw> = [
     path: '/market',
     component: MarketScreen,
   },
+  {
+    path: '/search',
+    component: SearchMarketScreen,
+  },
 ]
 
 const router = createRouter({
@@ -62,13 +67,23 @@ const globalMiddleware = [
 ]
 
 router.beforeEach(async (to, from, next) => {
+  const publicStore = usePublicStore()
+
   if (firstRoute) {
+    firstRoute = false
     for await (const middleware of globalMiddleware) {
       middleware()
     }
+
+    if (to.path !== '/t/home') {
+      return next('/t/home')
+    }
   }
 
-  firstRoute = false
+  if (publicStore.loading && to.path !== '/t/home') {
+    return next('/t/home')
+  }
+
   if (to.meta.middleware || to.matched.some(record => record.meta.middleware)) {
     const middleware = (to.meta.middleware || to.matched.filter(record => record.meta.middleware)[0].meta.middleware) as unknown as Middleware[]
 
