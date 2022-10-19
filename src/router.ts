@@ -8,6 +8,7 @@ import TradePage from './pages/TradePage.vue'
 import WalletPage from './pages/WalletPage.vue'
 import TabsPage from './pages/TabsPage.vue'
 import SearchMarketScreen from './screens/SearchMarketScreen.vue'
+import UserScreen from './screens/UserScreen.vue'
 import { fetchDataMiddleware } from '~/middleware/fetchData.global'
 
 let firstRoute = true
@@ -54,6 +55,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/search',
     component: SearchMarketScreen,
+  },
+  {
+    path: '/user',
+    component: UserScreen,
   },
 ]
 

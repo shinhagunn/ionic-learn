@@ -12,9 +12,9 @@ const ionRouter = useIonRouter()
   <IonPage class="pages-home">
     <IonContent>
       <div class="pages-home-head">
-        <div class="pages-home-head-user">
+        <RouterLink class="pages-home-head-user" to="/user">
           <UserDuotone />
-        </div>
+        </RouterLink>
         <div class="pages-home-head-search" @click="ionRouter.push('/search')">
           <SearchLight />
           <span class="ml-2">Search</span>

@@ -5,8 +5,7 @@ const actionColor = '#a2b8da'
 const headerBackground = '#1c2330'
 
 const colors: Record<string, string> = {
-  'text-color': '#212f4f',
-  'exchange-text-color': '#e1e7ef',
+  'text-color': '#e1e7ef',
   'white-color': '#e1e7ef',
   'primary-color': '#0095ff',
   'action-color': actionColor,

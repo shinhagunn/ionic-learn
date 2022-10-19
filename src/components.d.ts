@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     IonContent: typeof import('@ionic/vue')['IonContent']
     IonHeader: typeof import('@ionic/vue')['IonHeader']
     IonLabel: typeof import('@ionic/vue')['IonLabel']
+    IonNavLink: typeof import('@ionic/vue')['IonNavLink']
     IonPage: typeof import('@ionic/vue')['IonPage']
     IonRouterOutlet: typeof import('@ionic/vue')['IonRouterOutlet']
     IonSkeletonText: typeof import('@ionic/vue')['IonSkeletonText']
