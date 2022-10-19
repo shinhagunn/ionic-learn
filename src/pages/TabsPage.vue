@@ -9,12 +9,12 @@
         </IonTabButton>
 
         <IonTabButton tab="tab2" class="tabbar-item" href="/t/markets">
-          <IconCoinConvertDuotone />
+          <IconChartBarDuotone />
           <IonLabel>Markets</IonLabel>
         </IonTabButton>
 
         <IonTabButton tab="tab3" class="tabbar-item" href="/t/trade">
-          <IconExchangeDuotone />
+          <IconCoinConvertDuotone />
           <IonLabel>Trade</IonLabel>
         </IonTabButton>
 
@@ -28,47 +28,82 @@
 </template>
 
 <style lang="less">
+@keyframes rubberBand {
+	0% {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	40% {
+		transform: scale3d(0.85, 1.15, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.95, 1);
+	}
+
+	65% {
+		transform: scale3d(0.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, 0.95, 1)
+	}
+
+	100% {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
 .tabbar {
-  background-color: #20283c !important;
-  border-top: none;
+	background-color: #20283c !important;
+	border-top: none;
 
-  &-item {
-    color: @gray-color;
-  }
+	&-item {
+		color: @gray-color;
+	}
 
-  &::before, &::after {
-    content: none;
-  }
+	&::before,
+	&::after {
+		content: none;
+	}
 
-  &-item {
-    background-color: #20283c !important;
-  }
+	&-item {
+		background-color: #20283c !important;
+	}
 
-  .tab-selected {
-    color: @primary-color;
+	.tab-selected {
+		color: @primary-color;
 
-    .cls-1 {
-      fill: #0095ff;
-    }
+		.cls-1 {
+			fill: #0095ff;
+		}
 
-    .cls-2 {
-      fill: #88b4e6;
-    }
-  }
+		.cls-2 {
+			fill: #88b4e6;
+		}
 
-  svg {
-    width: 2rem;
-    height: 2rem;
-  }
+		svg {
+			animation: rubberBand 800ms alternate ease-out;
+		}
+	}
 
-  .cls-1 {
-    fill: @gray-color;
-    transition: all 0.3s;
-  }
+	svg {
+		width: 2rem;
+		height: 2rem;
+	}
 
-  .cls-2 {
-    fill: @placeholder-color;
-    transition: all 0.3s;
-  }
+	.cls-1 {
+		fill: @gray-color;
+		transition: all 0.3s;
+	}
+
+	.cls-2 {
+		fill: @placeholder-color;
+		transition: all 0.3s;
+	}
 }
 </style>

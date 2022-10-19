@@ -16,6 +16,7 @@
     "antfu/if-newline": "off",
     "vue/valid-v-model": "off",
     "camelcase": "error",
-		"vue/no-deprecated-slot-attribute": "off"
+		"vue/no-deprecated-slot-attribute": "off",
+		"no-tabs": "off",
   }
 }
