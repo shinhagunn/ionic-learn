@@ -3,22 +3,22 @@
     <IonTabs>
       <IonRouterOutlet />
       <IonTabBar slot="bottom" class="tabbar">
-        <IonTabButton tab="tab1" class="tabbar-item" href="/t/home">
+        <IonTabButton tab="tab1" class="tabbar-item" href="/home">
           <IconHomeDashDuotone />
           <IonLabel>Home</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="tab2" class="tabbar-item" href="/t/markets">
+        <IonTabButton tab="tab2" class="tabbar-item" href="/markets">
           <IconChartBarDuotone />
           <IonLabel>Markets</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="tab3" class="tabbar-item" href="/t/trade">
+        <IonTabButton tab="tab3" class="tabbar-item" href="/trade">
           <IconCoinConvertDuotone />
           <IonLabel>Trade</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="tab4" class="tabbar-item" href="/t/wallet">
+        <IonTabButton tab="tab4" class="tabbar-item" href="/wallet">
           <IconWalletDuotone />
           <IonLabel>Wallet</IonLabel>
         </IonTabButton>
@@ -87,7 +87,7 @@
 		}
 
 		svg {
-			animation: rubberBand 800ms alternate ease-out;
+			animation: rubberBand 500ms alternate ease-out;
 		}
 	}
 

@@ -2,8 +2,10 @@
 import { useIonRouter } from '@ionic/vue'
 import type { ZTableColumn } from '~/types'
 import SearchBar from '~/layouts/SearchBar.vue'
+import StarFilled from '~/components/icon/StarFilled.vue'
 
 const ionRouter = useIonRouter()
+const tradeStore = useTradeStore()
 const publicStore = usePublicStore()
 const search = ref('')
 
@@ -17,6 +19,11 @@ const columns: ZTableColumn[] = [
     scopedSlots: true,
     align: Align.Right,
   },
+  {
+    key: 'action',
+    scopedSlots: true,
+    align: Align.Right,
+  },
 ]
 </script>
 
@@ -25,10 +32,10 @@ const columns: ZTableColumn[] = [
     <IonContent>
       <SearchBar v-model="search" placeholder="Search Coin">
         <template #suffix>
-          <span class="screen-search-market-back" @click="ionRouter.back()">Cancel</span>
+          <span class="screen-search-market-back bold-text" @click="ionRouter.back()">Cancel</span>
         </template>
       </SearchBar>
-      <ZTable :columns="columns" :data-source="publicStore.tickers" :head-enabled="false">
+      <ZTable :columns="columns" :data-source="publicStore.tickers" :search="search" :find-by="['market.base_unit', 'market.quote_unit', 'market.id', 'market.name']" :head-enabled="false">
         <template #market="{ item }">
           <div>
             <span class="text-white text-xl">{{ item.market.base_unit.toUpperCase() }}</span>
@@ -46,6 +53,14 @@ const columns: ZTableColumn[] = [
             >
               {{ item.price_change_percent }}
             </div>
+          </div>
+        </template>
+        <template #action="{ item }">
+          <div
+            :class="{ 'action-active': tradeStore.favorites.includes(item.id) }"
+            @click="tradeStore.ChangeFavorite(item.id)"
+          >
+            <StarFilled />
           </div>
         </template>
       </ZTable>
@@ -75,6 +90,7 @@ const columns: ZTableColumn[] = [
 
   .z-table {
     margin-top: 12px;
+
     &-row {
       line-height: normal;
       margin-bottom: 16px;
@@ -88,6 +104,21 @@ const columns: ZTableColumn[] = [
 
   .price {
     color: @gray-color;
+  }
+
+  .action {
+    max-width: 40px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &-active {
+      .cls-1 {
+        fill: @primary-color;
+      }
+    }
   }
 
   .cls-1 {

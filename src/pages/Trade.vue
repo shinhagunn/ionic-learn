@@ -10,7 +10,7 @@ const ionRouter = useIonRouter()
       Trade Page
     </IonHeader>
     <IonContent :scroll-y="false">
-      <IonButton @click="ionRouter.push('/search')">
+      <IonButton @click="ionRouter.push('/screen/search')">
         Go to login
       </IonButton>
     </IonContent>

@@ -6,7 +6,7 @@
     <ion-header :translucent="true">
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button text="Home" default-href="/t/home" />
+          <ion-back-button text="Home" default-href="/home" />
         </ion-buttons>
         <ion-title class="text-sm">
           MARKET

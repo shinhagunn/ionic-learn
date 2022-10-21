@@ -2,7 +2,8 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { IonicVue } from '@ionic/vue'
 import { VueQueryPlugin } from 'vue-query'
-import vant from 'vant'
+import vant, { Locale } from 'vant'
+import enUS from 'vant/es/locale/lang/en-US'
 import App from './App.vue'
 import router from './router'
 
@@ -16,16 +17,17 @@ import '~/assets/styles/index.less'
 import '@ionic/vue/css/normalize.css'
 import '@ionic/vue/css/structure.css'
 
+Locale.use('en-US', enUS)
+
 const pinia = createPinia()
 const app = createApp(App)
   .use(IonicVue, {
     swipeBackEnabled: false,
     mode: 'ios',
   })
-  .use(vant)
   // .use(VueQueryPlugin)
-  .use(pinia)
   .use(router)
+  .use(pinia)
 
 router.isReady().then(() => {
   app.mount('#app')

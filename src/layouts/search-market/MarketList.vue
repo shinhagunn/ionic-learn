@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ZTableColumn } from '~/types'
+import StarFilled from '~/components/icon/StarFilled.vue'
 withDefaults(defineProps<{
   dataSource: any[]
 }>(), {
@@ -7,6 +8,7 @@ withDefaults(defineProps<{
 })
 
 const publicStore = usePublicStore()
+const tradeStore = useTradeStore()
 
 const columns: ZTableColumn[] = [
   {
@@ -36,7 +38,7 @@ const changeCurrencyToUSDT = (name: string) => {
 </script>
 
 <template>
-  <div v-if="publicStore.loading" class="layouts-market-list-skeleton px-[8px]">
+  <div v-if="publicStore.loading" class="layouts-market-list-skeleton px-[12px]">
     <div class="layouts-market-list-skeleton-head">
       <div class="flex-1">
         Pair
@@ -58,7 +60,7 @@ const changeCurrencyToUSDT = (name: string) => {
         <IonSkeletonText animated style="width: 50%;" />
       </div>
       <div class="flex-1 relative">
-        <IonSkeletonText animated style="width: 56%; height: 28px; position: absolute; top: -19px; right: 0" />
+        <IonSkeletonText animated style="width: 70px; height: 28px; position: absolute; top: -19px; right: 0" />
       </div>
     </div>
   </div>
@@ -67,7 +69,10 @@ const changeCurrencyToUSDT = (name: string) => {
       <div>
         <span class="text-white text-xl">{{ item.market.base_unit.toUpperCase() }}</span>
         <span>/{{ item.market.quote_unit.toUpperCase() }}</span>
-        <div>Vol: {{ item.volume }}</div>
+        <div class="flex items-center">
+          <StarFilled v-if="tradeStore.favorites.includes(item.id)" />
+          <span>Vol: {{ item.volume }}</span>
+        </div>
       </div>
     </template>
     <template #price="{ item }">
@@ -78,7 +83,7 @@ const changeCurrencyToUSDT = (name: string) => {
     </template>
     <template #change="{ item }">
       <div
-        class="h-[28px] w-[70px] px-2 rounded flex items-center justify-center text-lg"
+        class="h-[28px] w-[70px] px-2 rounded flex items-center justify-center text-lg leading-normal"
         :class="[
           { 'bg-up': parseFloat(item.price_change_percent) >= 0 },
           { 'text-up': parseFloat(item.price_change_percent) >= 0 },
@@ -130,6 +135,15 @@ const changeCurrencyToUSDT = (name: string) => {
   .pair {
     color: @gray-color;
     font-size: 12px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .cls-1 {
+      fill: @primary-color;
+    }
   }
 
   .price {

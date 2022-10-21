@@ -18,6 +18,17 @@ export const usePublicStore = defineStore({
     }
   },
   actions: {
+    async FetchData() {
+      this.loading = true
+
+      await this.FetchConfig()
+      await Promise.all([
+        this.FetchTickers(),
+        this.FetchBanners(),
+      ])
+
+      this.loading = false
+    },
     async FetchConfig() {
       try {
         const { data } = await useBetterFetch<{
@@ -43,6 +54,7 @@ export const usePublicStore = defineStore({
         const res = await fetch(`${config.api.url}trade/public/tickers`)
         const data: Record<string, Ticker> = await res.json()
 
+        this.tickers = []
         for (const marketID in data) {
           const ticker = data[marketID]
 

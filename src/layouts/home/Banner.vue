@@ -18,7 +18,7 @@ const modules = [EffectCoverflow, Pagination, Controller]
       :space-between="0"
       :loop="true"
       :centered-slides="true"
-      :coverflow-effect="{
+      :coverflowEffect="{
         rotate: 50,
         stretch: 0,
         depth: 100,

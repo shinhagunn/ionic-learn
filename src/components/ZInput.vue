@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RandomString } from '~/mixins'
 import { InputType } from '~/types'
+import type { ZValidate } from '~/types'
 
 const props = withDefaults(defineProps<{
   type?: InputType
@@ -8,7 +9,8 @@ const props = withDefaults(defineProps<{
   name?: string
   maxLength?: number
   disabled?: boolean
-  error?: string
+  validate?: ZValidate[]
+  transformErrors?: Record<string, string>
   class?: string | string[] | Record<string, any> | Record<string, any>[]
   modelValue?: string
 }>(), {
@@ -26,6 +28,23 @@ const showPassword = ref(false)
 
 const inputType = computed(() => {
   return showPassword.value ? InputType.Text : props.type === InputType.Password ? InputType.Password : InputType.Text
+})
+
+const error = computed(() => {
+  if (!props.validate) {
+    return
+  }
+
+  for (const validate of props.validate) {
+    const err = validate(value.value)
+    if (err) {
+      if (props.transformErrors) {
+        return props.transformErrors[err] || err
+      }
+
+      return err
+    }
+  }
 })
 
 const onInput = (e: InputEvent) => {
@@ -150,10 +169,12 @@ defineExpose({
   line-height: 35px;
   color: white;
   transition: all 0.3s ease-in-out;
+  border: 1px solid rgba(@exchange-border-color, 0.5);
   border-radius: 4px;
 
   &-disabled {
     cursor: not-allowed;
+
     input {
       cursor: not-allowed;
       pointer-events: none;
@@ -165,12 +186,16 @@ defineExpose({
     width: 100%;
     height: 100%;
     color: inherit;
+    font-size: 14px;
+
     &::placeholder {
-      color: @placeholder-color;
+      color: @gray-color;
     }
   }
 
   &-error {
+    border: 1px solid @down-color;
+
     &-container {
       position: absolute;
       height: 28px;
@@ -182,9 +207,10 @@ defineExpose({
       position: absolute;
       width: 100%;
       height: 20px;
-      margin-top: 8px;
+      margin-top: 4px;
       line-height: 20px;
       color: @down-color;
+      font-size: 14px;
       top: 0;
       left: 0;
       opacity: 1;
@@ -196,10 +222,6 @@ defineExpose({
       opacity: 0;
       left: 0;
       top: -20px;
-    }
-
-    .z-auth-input-container {
-      border-color: @down-color !important;
     }
   }
 }

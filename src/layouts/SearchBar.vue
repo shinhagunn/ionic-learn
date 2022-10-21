@@ -30,11 +30,11 @@ const search = useVModel(props, 'modelValue', emit)
 .layouts-search-bar {
   display: flex;
   align-items: center;
-  padding: 8px;
+  padding: 12px;
 
   .z-input {
     flex: 1;
-    height: 32px;
+    height: 24px;
     background-color: rgba(@exchange-border-color, 0.5);
     border-radius: 12px;
 

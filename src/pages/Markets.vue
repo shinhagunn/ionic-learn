@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import MarketList from '~/layouts/search-market/MarketList.vue'
-import SearchBar from '~/layouts/SearchBar.vue'
+import SearchLight from '~/components/icon/SearchLight.vue'
 import config from '~/config'
 import type { ZTabItem } from '~/types'
 
-const search = ref('')
-
 const publicStore = usePublicStore()
+const tradeStore = useTradeStore()
 const activeTab = ref('favorites')
 
 const tabs = computed(() => {
@@ -34,17 +33,24 @@ const markets = computed(() => {
     result[config.quote_list[i]] = publicStore.tickers.filter(t => t.market.quote_unit === config.quote_list[i])
   }
 
+  result.favorites = publicStore.tickers.filter(t => tradeStore.favorites.includes(t.id))
+
   return result
 })
 </script>
 
 <template>
-  <IonPage class="pages-markets">
+  <IonPage class="page-markets">
     <IonContent :scroll-y="false">
-      <SearchBar v-model="search" placeholder="Search Coin/Trades/..." />
+      <div class="p-[10px]">
+        <RouterLink class="page-markets-search" to="/screen/search">
+          <SearchLight />
+          <span class="ml-2">Search</span>
+        </RouterLink>
+      </div>
       <ZTab v-model="activeTab" :swiper="true" :tabs="tabs">
         <template #favorites>
-          <span class="block pt-2 text-2xl text-white">Hải Phòng là nhất</span>
+          <MarketList :data-source="markets.favorites" />
         </template>
         <template v-for="quote in config.quote_list" :key="quote" #[quote]>
           <MarketList :data-source="markets[quote]" />
@@ -55,7 +61,29 @@ const markets = computed(() => {
 </template>
 
 <style lang="less">
-.pages-markets {
+.page-markets {
+  &-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    background-color: rgba(@exchange-border-color, 0.5) !important;
+    height: 24px;
+    border-radius: 12px;
+    color: @gray-color;
+    text-decoration: none;
+
+    svg {
+      margin-right: 4px;
+      width: 20px;
+      height: 20px;
+    }
+
+    .cls-1 {
+      fill: @gray-color;
+    }
+  }
+
   .z-tab-head-item {
     font-size: 14px;
   }

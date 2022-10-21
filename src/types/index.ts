@@ -183,18 +183,16 @@ export enum NoticeType {
   Warn = 'warn',
 }
 
-export interface NoticeOptions {
-  placement?: Placement
-  duration?: number
+export enum MessagePlacement {
+  Top = 'top',
+  Middle = 'middle',
+  Bottom = 'bottom',
 }
 
-export interface MessageOptions extends NoticeOptions {
+export interface MessageOptions {
   message: string
-}
-
-export interface NotificationOptions extends NoticeOptions {
-  title?: string
-  description?: string
+  placement?: MessagePlacement
+  duration?: number
 }
 
 export enum WebSocketType {
@@ -279,7 +277,7 @@ export interface ZAuthFormField {
   hidden?: boolean
   name: string
   label: string
-  placeholder: string
+  placeholder?: string
   type?: InputType
   maxLength?: number
   required?: boolean
@@ -288,30 +286,6 @@ export interface ZAuthFormField {
   styles?: string
   class?: string
   value?: Ref<any>
-}
-
-export type TradingViewResolution = '1' | '5' | '15' | '30' | '60' | '1D' | '1W' | '1440' | '10080'
-
-export interface TradingViewLastBar {
-  time: number
-  open: number
-  high: number
-  low: number
-  close: number
-  volume: number
-  isLastBar?: boolean
-  isBarClosed?: boolean
-}
-
-export interface TradingViewStream {
-  key: string
-  market: Market
-  channelString: string
-  lastBar: TradingViewLastBar
-  listener: (lastBar: TradingViewLastBar) => void
-  resolution: TradingViewResolution
-  subscribeUID: string
-  symbolInfo: TradingView.LibrarySymbolInfo
 }
 
 export type StorageLike = Pick<Storage, 'getItem' | 'removeItem' | 'setItem'>

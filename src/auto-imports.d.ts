@@ -22,6 +22,7 @@ declare global {
   const ExchangeLayout: typeof import('./types/index')['ExchangeLayout']
   const Format: typeof import('./types/index')['Format']
   const InputType: typeof import('./types/index')['InputType']
+  const MessagePlacement: typeof import('./types/index')['MessagePlacement']
   const NoticeType: typeof import('./types/index')['NoticeType']
   const OrderSide: typeof import('./types/index')['OrderSide']
   const OrderState: typeof import('./types/index')['OrderState']
@@ -74,6 +75,7 @@ declare global {
   const logicOr: typeof import('@vueuse/core')['logicOr']
   const makeDestructurable: typeof import('@vueuse/core')['makeDestructurable']
   const markRaw: typeof import('vue')['markRaw']
+  const navigateTo: typeof import('./composables/useRouter')['navigateTo']
   const nextTick: typeof import('vue')['nextTick']
   const onActivated: typeof import('vue')['onActivated']
   const onBeforeMount: typeof import('vue')['onBeforeMount']
@@ -132,6 +134,7 @@ declare global {
   const unrefElement: typeof import('@vueuse/core')['unrefElement']
   const until: typeof import('@vueuse/core')['until']
   const useActiveElement: typeof import('@vueuse/core')['useActiveElement']
+  const useAssetsStore: typeof import('./composables/useAssetsStore')['useAssetsStore']
   const useAsyncQueue: typeof import('@vueuse/core')['useAsyncQueue']
   const useAsyncState: typeof import('@vueuse/core')['useAsyncState']
   const useAttrs: typeof import('vue')['useAttrs']
@@ -224,8 +227,8 @@ declare global {
   const useRafFn: typeof import('@vueuse/core')['useRafFn']
   const useRefHistory: typeof import('@vueuse/core')['useRefHistory']
   const useResizeObserver: typeof import('@vueuse/core')['useResizeObserver']
-  const useRoute: typeof import('vue-router')['useRoute']
-  const useRouter: typeof import('vue-router')['useRouter']
+  const useRoute: typeof import('./composables/useRouter')['useRoute']
+  const useRouter: typeof import('./composables/useRouter')['useRouter']
   const useScreenOrientation: typeof import('@vueuse/core')['useScreenOrientation']
   const useScreenSafeArea: typeof import('@vueuse/core')['useScreenSafeArea']
   const useScriptTag: typeof import('@vueuse/core')['useScriptTag']
@@ -254,9 +257,11 @@ declare global {
   const useTimestamp: typeof import('@vueuse/core')['useTimestamp']
   const useTitle: typeof import('@vueuse/core')['useTitle']
   const useToggle: typeof import('@vueuse/core')['useToggle']
+  const useTradeStore: typeof import('./composables/useTradeStore')['useTradeStore']
   const useTransition: typeof import('@vueuse/core')['useTransition']
   const useUrlSearchParams: typeof import('@vueuse/core')['useUrlSearchParams']
   const useUserMedia: typeof import('@vueuse/core')['useUserMedia']
+  const useUserStore: typeof import('./composables/useUserStore')['useUserStore']
   const useVModel: typeof import('@vueuse/core')['useVModel']
   const useVModels: typeof import('@vueuse/core')['useVModels']
   const useVibrate: typeof import('@vueuse/core')['useVibrate']
@@ -309,6 +314,7 @@ declare module '@vue/runtime-core' {
     readonly ExchangeLayout: UnwrapRef<typeof import('./types/index')['ExchangeLayout']>
     readonly Format: UnwrapRef<typeof import('./types/index')['Format']>
     readonly InputType: UnwrapRef<typeof import('./types/index')['InputType']>
+    readonly MessagePlacement: UnwrapRef<typeof import('./types/index')['MessagePlacement']>
     readonly NoticeType: UnwrapRef<typeof import('./types/index')['NoticeType']>
     readonly OrderSide: UnwrapRef<typeof import('./types/index')['OrderSide']>
     readonly OrderState: UnwrapRef<typeof import('./types/index')['OrderState']>
@@ -361,6 +367,7 @@ declare module '@vue/runtime-core' {
     readonly logicOr: UnwrapRef<typeof import('@vueuse/core')['logicOr']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
+    readonly navigateTo: UnwrapRef<typeof import('./composables/useRouter')['navigateTo']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>
@@ -419,6 +426,7 @@ declare module '@vue/runtime-core' {
     readonly unrefElement: UnwrapRef<typeof import('@vueuse/core')['unrefElement']>
     readonly until: UnwrapRef<typeof import('@vueuse/core')['until']>
     readonly useActiveElement: UnwrapRef<typeof import('@vueuse/core')['useActiveElement']>
+    readonly useAssetsStore: UnwrapRef<typeof import('./composables/useAssetsStore')['useAssetsStore']>
     readonly useAsyncQueue: UnwrapRef<typeof import('@vueuse/core')['useAsyncQueue']>
     readonly useAsyncState: UnwrapRef<typeof import('@vueuse/core')['useAsyncState']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
@@ -511,8 +519,8 @@ declare module '@vue/runtime-core' {
     readonly useRafFn: UnwrapRef<typeof import('@vueuse/core')['useRafFn']>
     readonly useRefHistory: UnwrapRef<typeof import('@vueuse/core')['useRefHistory']>
     readonly useResizeObserver: UnwrapRef<typeof import('@vueuse/core')['useResizeObserver']>
-    readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
-    readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
+    readonly useRoute: UnwrapRef<typeof import('./composables/useRouter')['useRoute']>
+    readonly useRouter: UnwrapRef<typeof import('./composables/useRouter')['useRouter']>
     readonly useScreenOrientation: UnwrapRef<typeof import('@vueuse/core')['useScreenOrientation']>
     readonly useScreenSafeArea: UnwrapRef<typeof import('@vueuse/core')['useScreenSafeArea']>
     readonly useScriptTag: UnwrapRef<typeof import('@vueuse/core')['useScriptTag']>
@@ -541,9 +549,11 @@ declare module '@vue/runtime-core' {
     readonly useTimestamp: UnwrapRef<typeof import('@vueuse/core')['useTimestamp']>
     readonly useTitle: UnwrapRef<typeof import('@vueuse/core')['useTitle']>
     readonly useToggle: UnwrapRef<typeof import('@vueuse/core')['useToggle']>
+    readonly useTradeStore: UnwrapRef<typeof import('./composables/useTradeStore')['useTradeStore']>
     readonly useTransition: UnwrapRef<typeof import('@vueuse/core')['useTransition']>
     readonly useUrlSearchParams: UnwrapRef<typeof import('@vueuse/core')['useUrlSearchParams']>
     readonly useUserMedia: UnwrapRef<typeof import('@vueuse/core')['useUserMedia']>
+    readonly useUserStore: UnwrapRef<typeof import('./composables/useUserStore')['useUserStore']>
     readonly useVModel: UnwrapRef<typeof import('@vueuse/core')['useVModel']>
     readonly useVModels: UnwrapRef<typeof import('@vueuse/core')['useVModels']>
     readonly useVibrate: UnwrapRef<typeof import('@vueuse/core')['useVibrate']>

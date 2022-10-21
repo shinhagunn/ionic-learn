@@ -10,7 +10,7 @@ const ionRouter = useIonRouter()
       Wallet Page
     </IonHeader>
     <IonContent :scroll-y="false">
-      <IonButton @click="ionRouter.push('/login', PopupAnimation)">
+      <IonButton @click="ionRouter.push('/screen/login', PopupAnimation)">
         Go to login
       </IonButton>
     </IonContent>

@@ -25,7 +25,7 @@ const tabBouding = ref<DOMRect>()
 const swiperRef = ref<SwiperCore>()
 const slots = useSlots()
 const keys = Object.keys(slots) // ['tab', 'panel']
-const headElement = templateRef('head')
+const headElement = templateRef<HTMLElement>('head')
 const scrollLeft = ref(0)
 
 const tabElement = useCurrentElement()
@@ -51,11 +51,15 @@ onMounted(async () => {
   }
 })
 
+const reloadBouding = () => {
+  bouding.value = activeTabElement().getBoundingClientRect()
+  scrollLeft.value = headElement.value!.scrollLeft
+}
+
 const onClick = async (e: MouseEvent, tab: ZTabItem) => {
   activeTab.value = tab.key
   await nextTick()
-  bouding.value = activeTabElement().getBoundingClientRect()
-  scrollLeft.value = headElement.value!.scrollLeft
+  reloadBouding()
 
   const index = keys.findIndex(k => k === activeTab.value)
   if (index !== -1) {
@@ -67,7 +71,20 @@ const onSlideChange = async () => {
   if (swiperRef.value) {
     activeTab.value = keys[swiperRef.value.activeIndex]
     await nextTick()
-    bouding.value = activeTabElement().getBoundingClientRect()
+    reloadBouding()
+    if (bouding.value!.right + 12 > tabElement.value.scrollWidth) {
+      headElement.value.scrollTo({
+        top: 0,
+        left: bouding.value!.right - tabElement.value.scrollWidth + 12 + scrollLeft.value,
+        behavior: 'smooth',
+      })
+    } else if (bouding.value!.x < 12) {
+      headElement.value.scrollTo({
+        top: 0,
+        left: Math.max(headElement.value.scrollLeft + bouding.value!.x - 12, 0),
+        behavior: 'smooth',
+      })
+    }
   }
 }
 </script>
@@ -76,11 +93,11 @@ const onSlideChange = async () => {
   <div class="z-tab">
     <div ref="head" class="z-tab-head">
       <div
-        v-for="tab in tabs"
+        v-for="(tab, index) in tabs"
         :key="tab.key"
         :ref="`tab-${tab.key}`"
         class="z-tab-head-item"
-        :class="[{ 'z-tab-head-item-active': activeTab === tab.key }]"
+        :class="[{ 'z-tab-head-item-active': activeTab === tab.key, 'mr-0': index === tabs.length - 1 }]"
         @click="(e) => onClick(e, tab)"
       >
         <slot v-if="tab.slotName" :name="tab.key" />
@@ -114,11 +131,12 @@ const onSlideChange = async () => {
 
 <style lang="less">
 .z-tab {
+  height: 100%;
 
   &-head {
     display: flex;
     position: relative;
-    padding: 0 8px;
+    padding: 0 12px;
     height: 32px;
     user-select: none;
     overflow-x: scroll;
@@ -127,14 +145,14 @@ const onSlideChange = async () => {
       display: flex;
       align-items: center;
       height: 100%;
-      margin-right: 24px;
+      margin: 0 12px;
       cursor: pointer;
       transition: all 0.3s;
       font-size: 12px;
       color: @gray-color;
 
-      &:last-child {
-        margin-right: 0;
+      &:first-child {
+        margin-left: 0;
       }
 
       &-active {
@@ -149,6 +167,10 @@ const onSlideChange = async () => {
       background-color: @primary-color;
       transition: transform .3s cubic-bezier(.645,.045,.355,1),width .2s cubic-bezier(.645,.045,.355,1),left .3s cubic-bezier(.645,.045,.355,1);
     }
+  }
+
+  .swiper {
+    height: 100%;
   }
 }
 </style>

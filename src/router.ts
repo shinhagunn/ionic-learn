@@ -1,30 +1,27 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router'
 import type { RouteRecordRaw } from 'vue-router'
-import LoginScreen from './screens/LoginScreen.vue'
-import MarketScreen from './screens/MarketScreen.vue'
-import HomePage from './pages/HomePage.vue'
-import MarketsPage from './pages/MarketsPage.vue'
-import TradePage from './pages/TradePage.vue'
-import WalletPage from './pages/WalletPage.vue'
-import TabsPage from './pages/TabsPage.vue'
-import SearchMarketScreen from './screens/SearchMarketScreen.vue'
-import UserScreen from './screens/UserScreen.vue'
+import LoginScreen from './screens/Login.vue'
+import RegisterScreen from './screens/Register.vue'
+import HomePage from './pages/Home.vue'
+import MarketsPage from './pages/Markets.vue'
+import TradePage from './pages/Trade.vue'
+import WalletPage from './pages/Wallet.vue'
+import TabsPage from './pages/Tabs.vue'
+import SearchMarketScreen from './screens/SearchMarket.vue'
+import UserScreen from './screens/User.vue'
 import { fetchDataMiddleware } from '~/middleware/fetchData.global'
+import ConfirmEmail from './screens/ConfirmEmail.vue'
 
 let firstRoute = true
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/t/home',
-  },
-  {
-    path: '/t/',
     component: TabsPage,
     children: [
       {
         path: '',
-        redirect: '/t/home',
+        redirect: '/home',
       },
       {
         path: 'home',
@@ -45,19 +42,23 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
-    path: '/login',
+    path: '/screen/login',
     component: LoginScreen,
   },
   {
-    path: '/market',
-    component: MarketScreen,
+    path: '/screen/register',
+    component: RegisterScreen,
   },
   {
-    path: '/search',
+    path: '/screen/confirm-email',
+    component: ConfirmEmail,
+  },
+  {
+    path: '/screen/search',
     component: SearchMarketScreen,
   },
   {
-    path: '/user',
+    path: '/screen/user',
     component: UserScreen,
   },
 ]
@@ -80,13 +81,13 @@ router.beforeEach(async (to, from, next) => {
       middleware()
     }
 
-    if (to.path !== '/t/home') {
-      return next('/t/home')
+    if (to.path !== '/home') {
+      return next('/home')
     }
   }
 
-  if (publicStore.loading && to.path !== '/t/home') {
-    return next('/t/home')
+  if (publicStore.loading && to.path !== '/home') {
+    return next('/home')
   }
 
   if (to.meta.middleware || to.matched.some(record => record.meta.middleware)) {

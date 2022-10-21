@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { format as formatDate, fromUnixTime, parseISO } from 'date-fns'
-import { ChangePercentToClass, SideToClass } from '~/mixins'
+import { ChangePercentToClass, FindBy, SideToClass } from '~/mixins'
 import type { ZTableColumn } from '~/types'
 import { ParseType, SortBy } from '~/types'
 
@@ -20,6 +20,8 @@ const props = withDefaults(defineProps<{
   isRouterLink?: boolean
   routerBuilder?: string
   selectedIndex?: number
+  search?: string
+  findBy?: string[]
 }>(), {
   columns: () => [] as ZTableColumn[],
   dataSource: () => [] as any[],
@@ -69,6 +71,7 @@ const isEmpty = computed(() => {
 
 const dataFilter = computed(() => {
   if (!props.dataSource) return []
+  if (props.search && props.findBy) return FindBy(props.dataSource, props.findBy, props.search)
   if (!sortKey.value) return props.dataSource
   if (sortKind.value === SortKind.None) return props.dataSource
   if (!props.allowSortData) return props.dataSource
@@ -439,8 +442,8 @@ onMounted(() => {
   &-head, &-row {
     display: flex;
     width: 100%;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
     height: 32px;
     line-height: 32px;
 

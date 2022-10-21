@@ -5,6 +5,7 @@ import Components from 'unplugin-vue-components/vite'
 import { IonicResolver, VantResolver, VueUseComponentsResolver, VueUseDirectiveResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
 import { VitePWA } from 'vite-plugin-pwa'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import Unocss from 'unocss/vite'
 import colors from './src/colors'
 
@@ -19,6 +20,9 @@ export default defineConfig({
     Vue({
       include: [/\.vue$/, /\.md$/],
       reactivityTransform: true,
+    }),
+    vueJsx({
+      // options are passed on to @vue/babel-plugin-jsx
     }),
     Unocss(),
     VitePWA({
@@ -55,7 +59,6 @@ export default defineConfig({
       },
       imports: [
         'vue',
-        'vue-router',
         // 'vue-i18n',
         'vue/macros',
         '@vueuse/head',
